@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CryptoTrack Live — Personal Crypto Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;800&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <!-- ===== HEADER / NAV ===== -->
+  <header id="main-header">
+    <div class="nav-brand">
+      <span class="logo-icon">₿</span>
+      <span class="logo-text">CryptoTrack<span class="accent">Live</span></span>
+    </div>
+    <nav class="nav-links" id="nav-links">
+      <a href="#home" class="nav-link active" onclick="showSection('home', this)">Home</a>
+      <a href="#about" class="nav-link" onclick="showSection('about', this)">About</a>
+      <a href="#projects" class="nav-link" onclick="showSection('projects', this)">Projects</a>
+      <a href="#market" class="nav-link" onclick="showSection('market', this)">Market</a>
+      <a href="#portfolio" class="nav-link" onclick="showSection('portfolio', this)">Portfolio</a>
+      <a href="#alerts" class="nav-link" onclick="showSection('alerts', this)">Alerts</a>
+      <a href="#contact" class="nav-link" onclick="showSection('contact', this)">Contact</a>
+    </nav>
+    <div class="nav-controls">
+      <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="Toggle Dark/Light Mode">🌙</button>
+      <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Toggle Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ===== TICKER BAR ===== -->
+  <div class="ticker-wrapper">
+    <div class="ticker-track" id="tickerTrack">
+      <span class="ticker-loading">Loading live prices...</span>
+    </div>
+  </div>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main>
+
+    <!-- HOME SECTION -->
+    <section id="home" class="section active">
+      <div class="hero">
+        <div class="hero-text">
+          <p class="hero-tag">Real-Time Crypto Intelligence</p>
+          <h1 class="hero-title">Track. Invest.<br/><span class="accent">Dominate.</span></h1>
+          <p class="hero-sub">Monitor live cryptocurrency prices, build your mock portfolio, set price alerts, and stay ahead of the market — all in one sleek dashboard.</p>
+          <div class="hero-btns">
+            <button class="btn-primary" onclick="showSection('market', document.querySelector('[href=\'#market\']'))">Explore Market →</button>
+            <button class="btn-secondary" onclick="showSection('portfolio', document.querySelector('[href=\'#portfolio\']'))">My Portfolio</button>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-card" id="heroCard">
+            <div class="hc-label">Bitcoin (BTC)</div>
+            <div class="hc-price" id="heroBtcPrice">$—</div>
+            <div class="hc-change" id="heroBtcChange">Loading...</div>
+            <canvas id="heroChart" width="260" height="80"></canvas>
+          </div>
+          <div class="floating-badge badge-1">🚀 ETH +4.2%</div>
+          <div class="floating-badge badge-2">🔥 BNB Live</div>
+          <div class="floating-badge badge-3">⚡ SOL Trending</div>
+        </div>
+      </div>
+
+      <!-- Stats Row -->
+      <div class="stats-row">
+        <div class="stat-card">
+          <div class="stat-icon">🌐</div>
+          <div class="stat-info">
+            <span class="stat-label">Global Market Cap</span>
+            <span class="stat-val" id="statMcap">$—</span>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">📊</div>
+          <div class="stat-info">
+            <span class="stat-label">24h Volume</span>
+            <span class="stat-val" id="statVol">$—</span>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">👑</div>
+          <div class="stat-info">
+            <span class="stat-label">BTC Dominance</span>
+            <span class="stat-val" id="statDom">—%</span>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">🪙</div>
+          <div class="stat-info">
+            <span class="stat-label">Active Coins</span>
+            <span class="stat-val">10,000+</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="section">
+      <div class="section-header">
+        <h2>About <span class="accent">Me</span></h2>
+        <p class="section-sub">The developer behind CryptoTrack Live</p>
+      </div>
+      <div class="about-layout">
+        <div class="about-img-wrap">
+          <div class="about-avatar">
+            <span class="avatar-icon">👨‍💻</span>
+          </div>
+          <div class="about-socials">
+            <a href="#" class="social-btn">🐙 GitHub</a>
+            <a href="#" class="social-btn">💼 LinkedIn</a>
+            <a href="#" class="social-btn">🐦 Twitter</a>
+          </div>
+        </div>
+        <div class="about-content">
+          <h3 class="about-name">Crypto Developer <span class="accent">&</span> Web Engineer</h3>
+          <p class="about-bio">
+            I'm a passionate web developer and crypto enthusiast who built CryptoTrack Live as part of my Web Programming Languages lab at Iqra University. I love combining real-world data with clean, interactive UIs.
+          </p>
+          <p class="about-bio" style="margin-top:1rem;">
+            This project demonstrates my skills in HTML5 semantic structure, CSS Flexbox/Grid responsive layouts, and vanilla JavaScript including Fetch API, DOM manipulation, localStorage, and Canvas charts.
+          </p>
+          <div class="skills-grid">
+            <div class="skill-tag">HTML5</div>
+            <div class="skill-tag">CSS3</div>
+            <div class="skill-tag">JavaScript</div>
+            <div class="skill-tag">Fetch API</div>
+            <div class="skill-tag">Responsive Design</div>
+            <div class="skill-tag">Canvas API</div>
+            <div class="skill-tag">localStorage</div>
+            <div class="skill-tag">REST APIs</div>
+          </div>
+          <div class="about-stats">
+            <div class="as-item"><span class="as-num accent">3</span><span class="as-label">Files Submitted</span></div>
+            <div class="as-item"><span class="as-num accent">20+</span><span class="as-label">JS Functions</span></div>
+            <div class="as-item"><span class="as-num accent">7</span><span class="as-label">Sections Built</span></div>
+            <div class="as-item"><span class="as-num accent">100%</span><span class="as-label">Requirements Met</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section id="projects" class="section">
+      <div class="section-header">
+        <h2>My <span class="accent">Projects</span></h2>
+        <p class="section-sub">A dynamic gallery of web development projects</p>
+      </div>
+      <div class="projects-controls">
+        <button class="filter-btn active" onclick="filterProjects('all', this)">All</button>
+        <button class="filter-btn" onclick="filterProjects('html-css', this)">HTML/CSS</button>
+        <button class="filter-btn" onclick="filterProjects('javascript', this)">JavaScript</button>
+        <button class="filter-btn" onclick="filterProjects('api', this)">API Projects</button>
+        <button class="filter-btn" style="background:rgba(232,0,13,0.15);border-color:rgba(232,0,13,0.4);color:var(--accent);" onclick="showProject()">⭐ Featured Project</button>
+      </div>
+      <!-- projectInfo: dynamic project display (solution PDF requirement) -->
+      <div id="projectInfo" style="display:none;background:var(--card);border:1px solid var(--accent);border-radius:12px;padding:1.2rem 1.5rem;margin-bottom:1.5rem;color:var(--text);font-size:0.95rem;line-height:1.7;animation:fadeInUp 0.4s ease;"></div>
+      <div class="projects-gallery" id="projectsGallery">
+        <!-- Dynamically loaded by JS -->
+        <div class="spinner" style="margin:3rem auto;display:block;width:32px;height:32px;border-width:3px;"></div>
+      </div>
+    </section>
+
+    <!-- MARKET SECTION -->
+    <section id="market" class="section">
+      <div class="section-header">
+        <h2>Live <span class="accent">Market</span></h2>
+        <div class="market-controls">
+          <input type="text" id="searchInput" class="search-input" placeholder="🔍 Search coin..." oninput="filterCoins()" />
+          <div class="filter-btns">
+            <button class="filter-btn active" onclick="filterByCategory('all', this)">All</button>
+            <button class="filter-btn" onclick="filterByCategory('gainers', this)">🟢 Gainers</button>
+            <button class="filter-btn" onclick="filterByCategory('losers', this)">🔴 Losers</button>
+          </div>
+        </div>
+      </div>
+      <div class="table-wrapper">
+        <table class="crypto-table" id="cryptoTable">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Coin</th>
+              <th>Price</th>
+              <th>24h %</th>
+              <th>Market Cap</th>
+              <th>7d Chart</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="cryptoTableBody">
+            <tr><td colspan="7" class="loading-row"><div class="spinner"></div> Loading market data...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- PORTFOLIO SECTION -->
+    <section id="portfolio" class="section">
+      <div class="section-header">
+        <h2>My <span class="accent">Portfolio</span></h2>
+      </div>
+      <div class="portfolio-layout">
+        <!-- Add Coin Form -->
+        <div class="portfolio-form-card">
+          <h3>Add Holding</h3>
+          <form id="portfolioForm" novalidate>
+            <div class="form-group">
+              <label for="coinSelect">Select Coin</label>
+              <select id="coinSelect" class="form-control" required>
+                <option value="">-- Choose a coin --</option>
+              </select>
+              <span class="form-error" id="coinError"></span>
+            </div>
+            <div class="form-group">
+              <label for="coinQty">Quantity</label>
+              <input type="number" id="coinQty" class="form-control" placeholder="e.g. 0.5" step="any" min="0.0001" required />
+              <span class="form-error" id="qtyError"></span>
+            </div>
+            <div class="form-group">
+              <label for="buyPrice">Buy Price (USD)</label>
+              <input type="number" id="buyPrice" class="form-control" placeholder="e.g. 40000" step="any" min="0.01" required />
+              <span class="form-error" id="priceError"></span>
+            </div>
+            <button type="submit" class="btn-primary full-width">+ Add to Portfolio</button>
+          </form>
+        </div>
+
+        <!-- Portfolio Summary -->
+        <div class="portfolio-right">
+          <div class="portfolio-summary">
+            <div class="ps-item">
+              <span class="ps-label">Total Value</span>
+              <span class="ps-val" id="totalValue">$0.00</span>
+            </div>
+            <div class="ps-item">
+              <span class="ps-label">Total Invested</span>
+              <span class="ps-val" id="totalInvested">$0.00</span>
+            </div>
+            <div class="ps-item">
+              <span class="ps-label">P&L</span>
+              <span class="ps-val" id="totalPnl">$0.00</span>
+            </div>
+          </div>
+          <div id="portfolioList" class="portfolio-list">
+            <div class="empty-state">No holdings yet. Add your first coin! 🪙</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ALERTS SECTION -->
+    <section id="alerts" class="section">
+      <div class="section-header">
+        <h2>Price <span class="accent">Alerts</span></h2>
+      </div>
+      <div class="alerts-layout">
+        <div class="alert-form-card">
+          <h3>Set Alert</h3>
+          <form id="alertForm" novalidate>
+            <div class="form-group">
+              <label for="alertCoin">Coin</label>
+              <select id="alertCoin" class="form-control" required>
+                <option value="">-- Choose a coin --</option>
+              </select>
+              <span class="form-error" id="alertCoinError"></span>
+            </div>
+            <div class="form-group">
+              <label for="alertCondition">Condition</label>
+              <select id="alertCondition" class="form-control">
+                <option value="above">Price goes ABOVE</option>
+                <option value="below">Price goes BELOW</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="alertPrice">Target Price (USD)</label>
+              <input type="number" id="alertPrice" class="form-control" placeholder="e.g. 50000" step="any" min="0.01" required />
+              <span class="form-error" id="alertPriceError"></span>
+            </div>
+            <button type="submit" class="btn-primary full-width">🔔 Set Alert</button>
+          </form>
+        </div>
+        <div class="alerts-list-wrap">
+          <h3>Active Alerts</h3>
+          <div id="alertsList" class="alerts-list">
+            <div class="empty-state">No alerts set. Create one! 🔔</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="section">
+      <div class="section-header">
+        <h2>Get In <span class="accent">Touch</span></h2>
+        <p class="section-sub">Have questions about crypto or this dashboard? Reach out!</p>
+      </div>
+      <div class="contact-layout">
+        <div class="contact-info">
+          <div class="ci-item">
+            <span class="ci-icon">📧</span>
+            <div>
+              <strong>Email</strong>
+              <p>hello@cryptotrack.live</p>
+            </div>
+          </div>
+          <div class="ci-item">
+            <span class="ci-icon">🐦</span>
+            <div>
+              <strong>Twitter</strong>
+              <p>@CryptoTrackLive</p>
+            </div>
+          </div>
+          <div class="ci-item">
+            <span class="ci-icon">💬</span>
+            <div>
+              <strong>Discord</strong>
+              <p>discord.gg/cryptotrack</p>
+            </div>
+          </div>
+        </div>
+        <form id="contactForm" class="contact-form" novalidate>
+          <div class="form-group">
+            <label for="contactName">Full Name</label>
+            <input type="text" id="contactName" class="form-control" placeholder="Your name" required />
+            <span class="form-error" id="nameError"></span>
+          </div>
+          <div class="form-group">
+            <label for="contactEmail">Email Address</label>
+            <input type="email" id="contactEmail" class="form-control" placeholder="your@email.com" required />
+            <span class="form-error" id="emailError"></span>
+          </div>
+          <div class="form-group">
+            <label for="contactSubject">Subject</label>
+            <input type="text" id="contactSubject" class="form-control" placeholder="What's on your mind?" required />
+            <span class="form-error" id="subjectError"></span>
+          </div>
+          <div class="form-group">
+            <label for="contactMsg">Message</label>
+            <textarea id="contactMsg" class="form-control" rows="5" placeholder="Write your message here..." required></textarea>
+            <span class="form-error" id="msgError"></span>
+          </div>
+          <button type="submit" class="btn-primary full-width">Send Message 🚀</button>
+          <div id="contactSuccess" class="success-msg" style="display:none">✅ Message sent! We'll get back to you soon.</div>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-brand">
+        <span class="logo-icon">₿</span>
+        <span class="logo-text">CryptoTrack<span class="accent">Live</span></span>
+        <p>Real-time crypto intelligence for everyone.</p>
+      </div>
+      <div class="footer-links">
+        <span>Data by <a href="https://www.coingecko.com" target="_blank">CoinGecko API</a></span>
+        <span>Built with HTML · CSS · JavaScript</span>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2025 CryptoTrackLive. Open-Ended Lab Project — Iqra University.</div>
+  </footer>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
