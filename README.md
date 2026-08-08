@@ -23,4 +23,4 @@ A real-time cryptocurrency dashboard with live prices, a mock portfolio tracker,
 
 ## 👨‍💻 Built By
 Sohaib Nadeem — CS Graduate | AI Developer | Karachi, Pakistan
-github.com/sohaibnadeemcs
+github.com/sohaibbuilds
